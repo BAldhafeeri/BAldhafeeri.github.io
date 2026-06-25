@@ -2,57 +2,375 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Name | CV</title>
   <style>
+    :root {
+      --primary: #16324f;
+      --accent: #2f80ed;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --soft: #f7f9fc;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
-      font-family: Arial, sans-serif;
-      max-width: 850px;
-      margin: 40px auto;
-      padding: 0 20px;
-      color: #222;
+      margin: 0;
+      background: var(--soft);
+      color: var(--text);
+      font-family: "Segoe UI", Arial, sans-serif;
       line-height: 1.6;
     }
-    h1 { margin-bottom: 5px; }
-    h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
-    .contact { color: #555; }
-    .job { margin-bottom: 18px; }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 32px auto;
+      background: var(--white);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), #244e73);
+      color: white;
+      padding: 42px 48px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: -0.5px;
+    }
+
+    .role {
+      margin: 7px 0 18px;
+      font-size: 1.15rem;
+      opacity: 0.93;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      font-size: 0.95rem;
+    }
+
+    .contact a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.45);
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr;
+      gap: 0;
+    }
+
+    main {
+      padding: 38px 46px;
+    }
+
+    aside {
+      background: #fafbfd;
+      border-left: 1px solid var(--line);
+      padding: 38px 32px;
+    }
+
+    section {
+      margin-bottom: 34px;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin: 0 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+      letter-spacing: 0.2px;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    .item {
+      margin-bottom: 20px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: baseline;
+      margin-bottom: 3px;
+    }
+
+    .item-title {
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .item-date {
+      color: var(--muted);
+      font-size: 0.92rem;
+      white-space: nowrap;
+    }
+
+    .item-subtitle {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    li { margin-bottom: 6px; }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: #eaf2ff;
+      color: #1f5ca8;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 0.9rem;
+    }
+
+    .link-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .link-list li {
+      margin-bottom: 9px;
+      overflow-wrap: anywhere;
+    }
+
+    .link-list a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .note {
+      background: #fff8db;
+      border-left: 4px solid #e8b931;
+      padding: 12px 14px;
+      color: #6b5300;
+      font-size: 0.92rem;
+      border-radius: 4px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 18px 46px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .page { margin: 0; width: 100%; border-radius: 0; }
+      header { padding: 32px 24px; }
+      .content { grid-template-columns: 1fr; }
+      main, aside { padding: 30px 24px; }
+      aside { border-left: 0; border-top: 1px solid var(--line); }
+      footer { padding: 18px 24px; }
+      .item-header { flex-direction: column; gap: 2px; }
+      .item-date { white-space: normal; }
+    }
+
+    @media print {
+      body { background: white; }
+      .page { width: 100%; margin: 0; box-shadow: none; border-radius: 0; }
+      a { color: inherit !important; text-decoration: none !important; }
+    }
   </style>
 </head>
 <body>
 
-  <h1>Your Full Name</h1>
-      <p class="contact">
-  </p>
+  <!--
+  HOW TO EDIT:
+  Replace all text inside [square brackets] with your information.
+  You can duplicate any .item block to add more jobs, degrees, projects, or publications.
+  -->
 
-  <h2>Profile</h2>
-  <p>
-    Engineering researcher interested in robotics, haptics,
-    teleoperation, and virtual environments.
-  </p>
+  <div class="page">
+    <header>
+      <h1>[YOUR FULL NAME]</h1>
+      <div class="role">[Your Professional Title / Position]</div>
 
-  <h2>Education</h2>
-  <p><strong>PhD in Mechanical Engineering</strong><br>
-  University Name — Year</p>
+      <div class="contact">
+        <span>[City, Country]</span>
+        <a href="mailto:your.email@example.com">[your.email@example.com]</a>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+        <a href="https://orcid.org/your-orcid" target="_blank">ORCID / Website</a>
+      </div>
+    </header>
 
-  <h2>Experience</h2>
-  <div class="job">
-    <strong>Assistant Professor / Researcher</strong><br>
-    Institution Name — 2022–Present
-    <p>Briefly describe your responsibilities, teaching, research, or achievements.</p>
+    <div class="content">
+      <main>
+
+        <section>
+          <h2>Professional Profile</h2>
+          <p>
+            [Write 3–5 sentences about your academic background, professional role,
+            research interests, key strengths, and career objectives.]
+          </p>
+        </section>
+
+        <section>
+          <h2>Experience</h2>
+
+          <div class="item">
+            <div class="item-header">
+              <div class="item-title">[Job Title]</div>
+              <div class="item-date">[Month Year] – Present</div>
+            </div>
+            <div class="item-subtitle">[Institution / Company], [City, Country]</div>
+            <ul>
+              <li>[Main responsibility or achievement.]</li>
+              <li>[Research, project, teaching, management, or technical contribution.]</li>
+              <li>[Measurable outcome, publication, award, or impact.]</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <div class="item-title">[Previous Job Title]</div>
+              <div class="item-date">[Month Year] – [Month Year]</div>
+            </div>
+            <div class="item-subtitle">[Institution / Company], [City, Country]</div>
+            <ul>
+              <li>[Main responsibility or achievement.]</li>
+              <li>[Main responsibility or achievement.]</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Education</h2>
+
+          <div class="item">
+            <div class="item-header">
+              <div class="item-title">[PhD / MSc / BSc in Subject]</div>
+              <div class="item-date">[Year] – [Year]</div>
+            </div>
+            <div class="item-subtitle">[University Name], [City, Country]</div>
+            <p><strong>Thesis:</strong> [Thesis title or key topic]</p>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <div class="item-title">[Degree Name]</div>
+              <div class="item-date">[Year] – [Year]</div>
+            </div>
+            <div class="item-subtitle">[University Name], [City, Country]</div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Selected Projects</h2>
+
+          <div class="item">
+            <div class="item-header">
+              <div class="item-title">[Project Title]</div>
+              <div class="item-date">[Year]</div>
+            </div>
+            <p>
+              [Briefly explain the objective, methods or tools used, your role, and the outcome.]
+            </p>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <div class="item-title">[Project Title]</div>
+              <div class="item-date">[Year]</div>
+            </div>
+            <p>
+              [Briefly explain the objective, methods or tools used, your role, and the outcome.]
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Selected Publications</h2>
+          <ol>
+            <li>[Author(s)], “Title of Paper,” <em>Journal / Conference</em>, [Year].</li>
+            <li>[Author(s)], “Title of Paper,” <em>Journal / Conference</em>, [Year].</li>
+            <li>[Author(s)], “Title of Paper,” <em>Journal / Conference</em>, [Year].</li>
+          </ol>
+        </section>
+
+      </main>
+
+      <aside>
+
+        <section>
+          <h2>Research Interests</h2>
+          <div class="tag-list">
+            <span class="tag">[Robotics]</span>
+            <span class="tag">[Teleoperation]</span>
+            <span class="tag">[Haptics]</span>
+            <span class="tag">[Control Systems]</span>
+            <span class="tag">[Virtual Reality]</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>Technical Skills</h2>
+          <p><strong>Programming</strong><br>[MATLAB, Python, C++, etc.]</p>
+          <p><strong>Engineering Tools</strong><br>[ROS, Simulink, CAD, etc.]</p>
+          <p><strong>Other</strong><br>[Data analysis, academic writing, project management, etc.]</p>
+        </section>
+
+        <section>
+          <h2>Languages</h2>
+          <p><strong>[Arabic]</strong> — [Native]</p>
+          <p><strong>[English]</strong> — [Professional proficiency]</p>
+          <p><strong>[French]</strong> — [Basic / Intermediate / Fluent]</p>
+        </section>
+
+        <section>
+          <h2>Professional Links</h2>
+          <ul class="link-list">
+            <li><a href="https://github.com/yourusername" target="_blank">github.com/[yourusername]</a></li>
+            <li><a href="https://www.linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/[yourprofile]</a></li>
+            <li><a href="https://scholar.google.com/" target="_blank">Google Scholar Profile</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Awards & Certifications</h2>
+          <p>[Award / Scholarship / Certificate], [Year]</p>
+          <p>[Award / Scholarship / Certificate], [Year]</p>
+        </section>
+
+        <div class="note">
+          Tip: Delete sections you do not need. To add another entry, copy one full
+          <code>&lt;div class="item"&gt; ... &lt;/div&gt;</code> block.
+        </div>
+
+      </aside>
+    </div>
+
+    <footer>
+      © [YEAR] [YOUR FULL NAME] · Hosted with GitHub Pages
+    </footer>
   </div>
-
-  <h2>Research Interests</h2>
-  <p>Robotics, haptic feedback, teleoperation, control systems, virtual reality.</p>
-
-  <h2>Publications</h2>
-  <ul>
-    <li>Author, “Paper Title,” Journal/Conference, Year.</li>
-    <li>Author, “Paper Title,” Journal/Conference, Year.</li>
-  </ul>
-
-  <h2>Skills</h2>
-  <p>MATLAB, Python, ROS, CAD, Control Systems, Academic Writing.</p>
 
 </body>
 </html>
